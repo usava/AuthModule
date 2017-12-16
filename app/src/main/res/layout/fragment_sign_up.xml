@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cowboy.authmodule.auth.fragments.SignUpFragment">
+
+    <EditText
+        android:id="@+id/et_signup_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="put email"
+        android:layout_above="@+id/et_signup_login"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/et_signup_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="put login"
+        android:layout_above="@+id/et_signup_password"
+        android:layout_margin="10dp"
+        />
+    <EditText
+        android:id="@+id/et_signup_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="put password"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        />
+
+    <Button
+        android:id="@+id/btn_signup_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:layout_below="@+id/et_signup_password"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_signup_forgot"
+        android:layout_marginLeft="50dp"
+        android:text="Forgot Password"
+        android:layout_below="@+id/btn_signup_signup"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:id="@+id/tv_signup_signin"
+        android:layout_below="@+id/btn_signup_signup"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="100dp"
+        android:layout_toRightOf="@+id/tv_signup_forgot"
+        />
+
+</RelativeLayout>

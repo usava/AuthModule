@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cowboy.authmodule.auth.fragments.SignInFragment">
+
+    <EditText
+        android:id="@+id/et_signin_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="put email"
+        android:layout_above="@+id/et_signin_password"
+        android:layout_margin="20dp"/>
+
+    <EditText
+        android:id="@+id/et_signin_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="put password"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        />
+
+    <Button
+        android:id="@+id/btn_signin_signin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SignIn"
+        android:layout_below="@+id/et_signin_password"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_signin_forgot"
+        android:layout_marginLeft="50dp"
+        android:text="Forgot Password"
+        android:layout_below="@+id/btn_signin_signin"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:id="@+id/tv_signin_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:layout_below="@+id/btn_signin_signin"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="100dp"
+        android:layout_toRightOf="@+id/tv_signin_forgot"
+        />
+
+</RelativeLayout>
