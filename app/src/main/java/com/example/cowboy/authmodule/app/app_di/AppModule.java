@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.example.cowboy.authmodule.realm.IRealmService;
 import com.example.cowboy.authmodule.realm.RealmService;
+import com.example.cowboy.authmodule.utils.INetworkCheck;
+import com.example.cowboy.authmodule.utils.IValidator;
 import com.example.cowboy.authmodule.utils.NetworkCheckImpl;
 import com.example.cowboy.authmodule.utils.Validator;
 
@@ -30,11 +32,11 @@ public class AppModule
 
     @Provides
     @AppScope
-    public Validator provideValidator(){return new Validator();}
+    public IValidator provideValidator(){return new Validator();}
 
     @Provides
     @AppScope
-    public NetworkCheckImpl provideNetworkCheck(){return new NetworkCheckImpl(application);}
+    public INetworkCheck provideNetworkCheck(){return new NetworkCheckImpl(application);}
 
     @Provides
     @AppScope

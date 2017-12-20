@@ -15,7 +15,7 @@ public interface IPresenterContract
 
     interface IAuthPresenter<V extends IBaseView.IAuthView> extends IPresenterContract{
         void init(V view);
-        void doSignIn(String email, String password);
+        void doSignIn(String username);
         void doSignUp(String email, String phone, String password);
         void doFrogotPassword(String email);
     }

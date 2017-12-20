@@ -4,7 +4,11 @@ import com.google.gson.JsonArray;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -12,8 +16,10 @@ import rx.Observable;
  */
 
 public interface ApiService {
-
-    @FormUrlEncoded
-    @POST("")
-    Observable<JsonArray> signIn(@Field("email") String email, @Field("password") String password);
+    @Headers({
+            "Accept: application/vnd.github.v3.full+json",
+            "User-Agent: Retrofit-Sample-App"
+    })
+    @GET("users/{username}/repos")
+    Observable<JsonArray> getRepos(@Path("username") String username);
 }

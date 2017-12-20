@@ -1,5 +1,7 @@
 package com.example.cowboy.authmodule.auth;
 
+import android.util.Log;
+
 import com.example.cowboy.authmodule.api.ApiService;
 import com.example.cowboy.authmodule.common.BaseInteractor;
 import com.example.cowboy.authmodule.common.IInteractorContract;
@@ -19,8 +21,10 @@ public class AuthInteractorImpl extends BaseInteractor<IInteractorContract.IAuth
     }
 
     @Override
-    public Observable<JsonArray> requestSignIn(String email, String password) {
-        return api.signIn(email, password).doOnSubscribe().doOnCompleted();
+    public Observable<JsonArray> getRepos(String username) {
+        return api.getRepos(username).doOnError( throwable ->
+                Log.d("slava", " interactor dooneror"+throwable.getMessage())
+        ).doOnCompleted(()->Log.d("slava", " oncomplete "));
     }
 
     @Override

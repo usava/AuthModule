@@ -10,23 +10,23 @@ import com.example.cowboy.authmodule.common.IPresenterContract;
  * Created by Cowboy on 15.12.2017.
  */
 
-public class MainPresenterImpl extends BasePresenter<IBaseView.IMainView> implements IPresenterContract.IMainPresenter<IBaseView.IMainView> {
+public class MainPresenterImpl {
 
-    public MainPresenterImpl(Application application) {
-        this.application = application;
-    }
-
-    @Override
-    public void showMain() {
-
-    }
-
-    @Override
-    public void init(IBaseView.IMainView view){
-        super.init(view);
-    }
-    @Override
-    public void dismiss(){
-        super.dismiss();
-    }
+//    public MainPresenterImpl(Application application) {
+//        this.application = application;
+//    }
+//
+//    @Override
+//    public void showMain() {
+//
+//    }
+//
+//    @Override
+//    public void init(IBaseView.IMainView view){
+//        super.init(view);
+//    }
+//    @Override
+//    public void dismiss(){
+//        super.dismiss();
+//    }
 }

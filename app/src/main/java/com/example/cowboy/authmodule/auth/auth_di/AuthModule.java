@@ -7,6 +7,9 @@ import com.example.cowboy.authmodule.auth.AuthInteractorImpl;
 import com.example.cowboy.authmodule.auth.AuthPresenterImpl;
 import com.example.cowboy.authmodule.common.IInteractorContract;
 import com.example.cowboy.authmodule.common.IPresenterContract;
+import com.example.cowboy.authmodule.realm.IRealmService;
+import com.example.cowboy.authmodule.utils.INetworkCheck;
+import com.example.cowboy.authmodule.utils.IValidator;
 
 import dagger.Module;
 import dagger.Provides;
@@ -21,8 +24,9 @@ public class AuthModule
 {
     @Provides
     @AuthScope
-    IPresenterContract.IAuthPresenter provideAuthPresenter(Application application){
-        return new AuthPresenterImpl(application);
+    IPresenterContract.IAuthPresenter provideAuthPresenter(IInteractorContract.IAuthInteractor interactor, IRealmService realmService,
+                                                           IValidator validator, INetworkCheck networkCheck, Application application){
+        return new AuthPresenterImpl(interactor, realmService, validator, networkCheck, application);
     }
 
     @Provides

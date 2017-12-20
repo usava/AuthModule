@@ -2,6 +2,7 @@ package com.example.cowboy.authmodule.auth;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.cowboy.authmodule.R;
@@ -35,7 +36,8 @@ public class AuthActivity extends AppCompatActivity implements IBaseView.IAuthVi
 
             @Override
             public void signIn(String login, String password) {
-
+                presenter.doSignIn(login);
+                Log.d("login ", login);
             }
 
             @Override
@@ -74,7 +76,7 @@ public class AuthActivity extends AppCompatActivity implements IBaseView.IAuthVi
 
     @Override
     public void showError(String s) {
-
+        Toast.makeText(this, ""+s, Toast.LENGTH_SHORT).show();
     }
 
     @Override

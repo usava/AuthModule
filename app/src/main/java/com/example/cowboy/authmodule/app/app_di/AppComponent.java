@@ -12,7 +12,7 @@ import dagger.Component;
  */
 
 @AppScope
-@Component(modules = {AppModule.class})
+@Component(modules = {AppModule.class, ApiModule.class})
 
 public interface AppComponent {
     MainComponent plus(MainModule module);

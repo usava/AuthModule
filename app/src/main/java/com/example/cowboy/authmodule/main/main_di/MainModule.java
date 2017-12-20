@@ -14,9 +14,9 @@ import dagger.Provides;
 @Module
 public class MainModule
 {
-    @Provides
-    @MainScope
-    IPresenterContract.IMainPresenter provideMainPresenter(Application application){
-        return new MainPresenterImpl(application);
-    }
+//    @Provides
+//    @MainScope
+//    IPresenterContract.IMainPresenter provideMainPresenter(Application application){
+//        return new MainPresenterImpl(application);
+//    }
 }

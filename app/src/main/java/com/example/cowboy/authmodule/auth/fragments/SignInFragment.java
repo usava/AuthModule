@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -38,11 +39,18 @@ public class SignInFragment extends Fragment {
 
         final TextView tvForgot = (TextView) view.findViewById(R.id.tv_signin_forgot);
         final TextView tvSignUp = (TextView) view.findViewById(R.id.tv_signin_signup);
+        final Button btnSugnIn = (Button) view.findViewById(R.id.btn_signin_signin);
 
         tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 authListener.openSignUp();
+            }
+        });
+        btnSugnIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                authListener.signIn(etLogin.getText().toString(), "");
             }
         });
 

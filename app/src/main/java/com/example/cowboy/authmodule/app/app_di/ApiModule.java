@@ -1,4 +1,4 @@
-package com.example.cowboy.authmodule.app;
+package com.example.cowboy.authmodule.app.app_di;
 
 import android.app.Application;
 import android.util.Config;
@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by Cowboy on 16.12.2017.
  */
-
+@Module
 public class ApiModule {
     @Provides
     @AppScope
