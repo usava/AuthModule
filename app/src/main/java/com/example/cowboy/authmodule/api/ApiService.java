@@ -9,7 +9,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -25,6 +24,6 @@ public interface ApiService {
     Observable<JsonArray> getRepos(@Path("username") String username);
 
     @FormUrlEncoded
-    @POST("authenticate")
-    Observable<JsonObject> login(@Field("email") String email, @Field("pass") String pass);
+    @POST("auth")
+    Observable<JsonObject> login(@Field("phone") String email, @Field("password") String pass, @Field("key") String key);
 }

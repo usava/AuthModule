@@ -5,7 +5,6 @@ import android.util.Log;
 import com.example.cowboy.authmodule.api.ApiService;
 import com.example.cowboy.authmodule.common.BaseInteractor;
 import com.example.cowboy.authmodule.common.IInteractorContract;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import rx.Observable;
@@ -25,7 +24,9 @@ public class AuthInteractorImpl extends BaseInteractor<IInteractorContract.IAuth
 
     @Override
     public Observable<JsonObject> requestSignIn(String email, String password) {
-        return api.login(email, password)
+        String key = "rNkJGSL1sg@Jbz@iFWV8|4fB5lP{n#Z%HGGQtQOb";
+        password = MD5(password);
+        return api.login(email, password, key)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError(throwable ->
@@ -43,5 +44,19 @@ public class AuthInteractorImpl extends BaseInteractor<IInteractorContract.IAuth
     @Override
     public Observable<String> requestForgotPassword(String email) {
         return Observable.just("");
+    }
+
+    public String MD5(String md5) {
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+            byte[] array = md.digest(md5.getBytes());
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < array.length; ++i) {
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
+            }
+            return sb.toString();
+        } catch (java.security.NoSuchAlgorithmException e) {
+        }
+        return null;
     }
 }
