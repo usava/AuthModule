@@ -25,7 +25,17 @@ public class AuthInteractorImpl extends BaseInteractor<IInteractorContract.IAuth
     @Override
     public Observable<JsonObject> requestSignIn(String email, String password) {
         String key = "rNkJGSL1sg@Jbz@iFWV8|4fB5lP{n#Z%HGGQtQOb";
+        Log.d("slava", " before login before md5 "+password);
         password = MD5(password);
+
+//        return api.getMapInfo(key, "123.22", "22.33") .subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .doOnError(throwable ->
+//                        Log.d("slava", " interactor dooneror getmapinfo"+throwable.getMessage())
+//                )
+//                .doOnNext(next -> Log.d("slava", " onnext "+next.toString()))
+//                .doOnCompleted(()->Log.d("slava", " oncomplete "));
+        Log.d("slava", " before login md5 "+password);
         return api.login(email, password, key)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

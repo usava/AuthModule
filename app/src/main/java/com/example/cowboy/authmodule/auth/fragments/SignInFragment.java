@@ -50,7 +50,7 @@ public class SignInFragment extends Fragment {
         btnSugnIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                authListener.signIn(etLogin.getText().toString(), "");
+                authListener.signIn(etLogin.getText().toString(), etPassword.getText().toString());
             }
         });
 

@@ -1,7 +1,9 @@
 package com.example.cowboy.authmodule.auth;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -11,6 +13,7 @@ import com.example.cowboy.authmodule.auth.auth_di.AuthModule;
 import com.example.cowboy.authmodule.auth.fragments.SignInFragment;
 import com.example.cowboy.authmodule.common.IBaseView;
 import com.example.cowboy.authmodule.common.IPresenterContract;
+import com.example.cowboy.authmodule.receiver.NetworkMonitor;
 
 import javax.inject.Inject;
 
@@ -19,11 +22,17 @@ public class AuthActivity extends AppCompatActivity implements IBaseView.IAuthVi
     @Inject
     IPresenterContract.IAuthPresenter presenter;
 
+    private NetworkMonitor mNetworkMonitor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
+
+        mNetworkMonitor = new NetworkMonitor();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(mNetworkMonitor, intentFilter);
 
         ((AuthModuleApp) getApplication()).getAppComponent().plus(new AuthModule()).inject(this);
         presenter.init(this);

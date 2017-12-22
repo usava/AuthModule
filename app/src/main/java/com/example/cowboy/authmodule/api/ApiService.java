@@ -9,6 +9,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -26,4 +27,11 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("auth")
     Observable<JsonObject> login(@Field("phone") String email, @Field("password") String pass, @Field("key") String key);
+
+    @FormUrlEncoded
+    @POST("registration")
+    Observable<JsonObject> registrartion(@Field("phone") String email, @Field("password") String pass, @Field("key") String key);
+
+    @GET("getMapInfo")
+    Observable<JsonObject> getMapInfo(@Query("access_token") String token, @Query("lat") String lat, @Query("lng") String lng);
 }
