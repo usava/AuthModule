@@ -6,8 +6,11 @@ import com.example.cowboy.authmodule.api.ApiService;
 import com.example.cowboy.authmodule.common.BaseInteractor;
 import com.example.cowboy.authmodule.common.IInteractorContract;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Cowboy on 16.12.2017.
@@ -21,10 +24,15 @@ public class AuthInteractorImpl extends BaseInteractor<IInteractorContract.IAuth
     }
 
     @Override
-    public Observable<JsonArray> getRepos(String username) {
-        return api.getRepos(username).doOnError( throwable ->
-                Log.d("slava", " interactor dooneror"+throwable.getMessage())
-        ).doOnCompleted(()->Log.d("slava", " oncomplete "));
+    public Observable<JsonObject> requestSignIn(String email, String password) {
+        return api.login(email, password)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnError(throwable ->
+                    Log.d("slava", " interactor dooneror "+throwable.getMessage())
+                )
+                .doOnNext(next -> Log.d("slava", " onnext "+next.toString()))
+                .doOnCompleted(()->Log.d("slava", " oncomplete "));
     }
 
     @Override

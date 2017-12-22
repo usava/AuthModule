@@ -35,9 +35,9 @@ public class AuthActivity extends AppCompatActivity implements IBaseView.IAuthVi
             }
 
             @Override
-            public void signIn(String login, String password) {
-                presenter.doSignIn(login);
-                Log.d("login ", login);
+            public void signIn(String email, String password) {
+                presenter.doSignIn(email, password);
+                Log.d("login password", email+" "+password);
             }
 
             @Override

@@ -36,8 +36,8 @@ public class AuthPresenterImpl extends BasePresenter<IBaseView.IAuthView, IInter
     }
 
     @Override
-    public void doSignIn(String username) {
-        interactor.getRepos(username).doOnRequest(mLong -> view.showProgress()).subscribe(
+    public void doSignIn(String email, String password) {
+        interactor.requestSignIn(email, password).doOnRequest(mLong -> view.showProgress()).subscribe(
                 next ->{
                     view.showError(next.toString());
                     Log.d("slava", " next "+next.toString());

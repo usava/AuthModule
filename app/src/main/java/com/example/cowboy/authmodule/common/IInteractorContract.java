@@ -1,6 +1,7 @@
 package com.example.cowboy.authmodule.common;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import rx.Observable;
 
@@ -12,7 +13,7 @@ public interface IInteractorContract {
 
     interface IAuthInteractor extends IInteractorContract {
 
-        Observable<JsonArray> getRepos(String username);
+        Observable<JsonObject> requestSignIn(String email, String password);
         Observable<String> requestSignUp(String email, String phone, String password);
         Observable<String> requestForgotPassword(String email);
     }

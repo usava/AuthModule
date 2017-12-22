@@ -1,6 +1,7 @@
 package com.example.cowboy.authmodule.api;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -22,4 +23,8 @@ public interface ApiService {
     })
     @GET("users/{username}/repos")
     Observable<JsonArray> getRepos(@Path("username") String username);
+
+    @FormUrlEncoded
+    @POST("authenticate")
+    Observable<JsonObject> login(@Field("email") String email, @Field("pass") String pass);
 }
