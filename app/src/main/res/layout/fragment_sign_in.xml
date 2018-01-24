@@ -21,7 +21,7 @@
         android:layout_margin="20dp"
         />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_signin_signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,10 +1,13 @@
 package com.example.cowboy.authmodule.auth;
 
 import android.content.IntentFilter;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.cowboy.authmodule.R;
@@ -39,9 +42,7 @@ public class AuthActivity extends AppCompatActivity implements IBaseView.IAuthVi
 
         IAuthListener authListener = new IAuthListener() {
             @Override
-            public void signUp(String login, String email, String password) {
-
-            }
+            public void signUp(String login, String email, String password) {}
 
             @Override
             public void signIn(String email, String password) {
@@ -67,6 +68,24 @@ public class AuthActivity extends AppCompatActivity implements IBaseView.IAuthVi
             @Override
             public void forgotPassword() {
                 Toast.makeText(getApplicationContext(), "sendForgot", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void doSignInValidate(EditText etEmail, EditText etPassword, AppCompatButton btn, Drawable drwValid, Drawable drwNotValid, int flag) {
+                presenter.doValidateSign(etEmail, etPassword, null, btn, drwValid, drwNotValid, flag);
+                Toast.makeText(AuthActivity.this, "doSignInValidate"+etEmail.getText().toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void doSignUpValidate(EditText etEmail, EditText etPassword, EditText etName, AppCompatButton btn, Drawable drwValid, Drawable drwNotValid, int flag) {
+                presenter.doValidateSign(etEmail, etPassword, null, btn, drwValid, drwNotValid, flag);
+                Toast.makeText(AuthActivity.this, "doSignInValidate"+etEmail.getText().toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void doForgotPasswordValidate(EditText etEmail, AppCompatButton btn, Drawable drwValid, Drawable drwNotValid, int flag) {
+                presenter.doValidateSign(etEmail, null, null, btn, drwValid, drwNotValid, flag);
+                Toast.makeText(AuthActivity.this, "doSignInValidate"+etEmail.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -102,5 +121,8 @@ public class AuthActivity extends AppCompatActivity implements IBaseView.IAuthVi
         void openSignIn();
         void openDialogForgotPassword();
         void forgotPassword();
+        void doSignInValidate(EditText etEmail, EditText etPassword, AppCompatButton btn, Drawable drwvalid, Drawable drwNotValid, int flag);
+        void doSignUpValidate(EditText etEmail, EditText etPassword, EditText etName, AppCompatButton btn, Drawable drwValid, Drawable drwNotValid, int flag);
+        void doForgotPasswordValidate(EditText etEmail, AppCompatButton btn, Drawable drwValid, Drawable drwNotValid, int flag);
     }
 }

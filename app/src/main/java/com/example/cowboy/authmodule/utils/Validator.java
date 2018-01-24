@@ -8,12 +8,13 @@ import android.text.TextUtils;
 
 public class Validator implements IValidator{
 
-    public Validator() {
-    }
+    public Validator() {}
     @Override
-    public boolean validUsername(String username) {
+    public boolean isUsernameValid(CharSequence username) {
         return !TextUtils.isEmpty(username);
     }
+
+
     @Override
     public boolean isEmailValid(CharSequence email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();

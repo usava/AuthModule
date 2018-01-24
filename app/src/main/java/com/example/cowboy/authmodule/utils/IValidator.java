@@ -6,7 +6,7 @@ package com.example.cowboy.authmodule.utils;
 
 public interface IValidator {
 
-    boolean validUsername(String username);
+    boolean isUsernameValid(CharSequence username);
 
     boolean isEmailValid(CharSequence email);
 
